@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <script>
+      var appUtil = {};
+      var IOS_DEVICE = "ios";
+      var ANDROID_DEVICE = "android";
+
+      appUtil.getDeviceType = function () {
+          var uagent = navigator.userAgent.toLocaleLowerCase();
+          if (uagent.search("android") > -1) {
+              return ANDROID_DEVICE;
+          } else if (uagent.search("iphone") > -1 || uagent.search("ipod") > -1 || uagent.search("ipad") > -1) {
+              return IOS_DEVICE;
+          }
+      };
+
+      const chkDevice = () => {
+        var deviceType = appUtil.getDeviceType();
+        const layer = document.getElementById("device");
+        if (deviceType === IOS_DEVICE) {
+          layer.innerHTML = "iOS";
+        } else if (deviceType === ANDROID_DEVICE) {
+          layer.innerHTML = "안드로이드";
+        } else {
+          layer.innerHTML = "알 수 없음";
+        }
+      }
+      
+      const moveAppStore = () => {
+        chkDevice();
+        var deviceType = appUtil.getDeviceType();
+        if (deviceType === IOS_DEVICE) {
+          location.href = "https://play.google.com/store/apps/details?id=kr.co.businesson.smartbill2";
+        } else {
+          location.href = "https://apps.apple.com/kr/app/%EC%8A%A4%EB%A7%88%ED%8A%B8%EB%B9%8C-%EC%A0%84%EC%9E%90%EC%84%B8%EA%B8%88%EA%B3%84%EC%82%B0%EC%84%9C/id6760402235?l=en-GB";
+        }
+      }
+    </script>
+  </head>
+<body>
+  <div id="device"></div>
+  <div>
+    <button type="button" onClick="chkDevice">디바이스 확인</button>
+  </div>
+  <div>
+    <button type="button" onClick="moveAppStore">이동</button>
+  </div>
+</body> 
+</html>
