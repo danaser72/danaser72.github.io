@@ -2,6 +2,10 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
+      window.onload = () => {
+        document.getElementById("navigator") = navigator.userAgent;
+      }
+      
       var appUtil = {};
       var IOS_DEVICE = "ios";
       var ANDROID_DEVICE = "android";
@@ -36,11 +40,31 @@
           location.href = "https://play.google.com/store/apps/details?id=kr.co.businesson.smartbill2";
         }
       }
+
+      const openApp = (type) => {
+        let url = 'smartbill2://';
+        switch (type) {
+          case 1:
+            location.href = url;
+            break;
+          case 2:
+            location.replace(url);
+            break;
+          case 3:
+            location.href = `intent://#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2`;
+            break;
+        }
+      }
     </script>
   </head>
 <body>
+  <div id="navigator"></div>
   <div id="device"></div>
   <button type="button" onClick="chkDevice()">디바이스 확인</button>
   <button type="button" onClick="moveAppStore()">이동</button>
+  
+  <button type="button" onClick="openApp(1)">앱 열기 - location.href</button>
+  <button type="button" onClick="openApp(3)">앱 열기 - location.replace</button>
+  <button type="button" onClick="openApp(2)">앱 열기 - intent</button>
 </body> 
 </html>
