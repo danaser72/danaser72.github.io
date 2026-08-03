@@ -51,7 +51,8 @@
               location.replace('smartbill2://');
               break;
             case 3:
-              location.href = `intent://#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2`;
+              const fallbackUrl = encodeURIComponent('https://play.google.com/store/apps/details?id=kr.co.businesson.smartbill2');
+              location.href = `intent:#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2;S.browser_fallback_url=${fallbackUrl};end;`;
               break;
             case 4:
               const url = document.getElementById("txtUrl").value;
@@ -76,7 +77,7 @@
     <button type="button" onclick="openApp(2)">앱 열기 - location.replace</button>
     <button type="button" onclick="openApp(3)">앱 열기 - intent</button>
     <div>
-      <input type="text" id="txtUrl" value="intent://#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2"> <button type="button" onclick="openApp(4)">앱 열기 - custom</button>
+      <input type="text" id="txtUrl" value="intent:#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2;S.browser_fallback_url=${fallbackUrl};end;"> <button type="button" onclick="openApp(4)">앱 열기 - custom</button>
     </div>
   </div>
 </body> 
