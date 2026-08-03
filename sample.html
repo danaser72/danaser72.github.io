@@ -42,20 +42,25 @@
       }
 
       const openApp = (type) => {
-        switch (type) {
-          case 1:
-            location.href = 'smartbill2://';
-            break;
-          case 2:
-            location.replace('smartbill2://');
-            break;
-          case 3:
-            location.href = `intent://#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2`;
-            break;
-          case 4:
-            const url = document.getElementById("txtUrl").value;
-            location.href = url;
-            break;
+        try {
+          switch (type) {
+            case 1:
+              location.href = 'smartbill2://';
+              break;
+            case 2:
+              location.replace('smartbill2://');
+              break;
+            case 3:
+              location.href = `intent://#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2`;
+              break;
+            case 4:
+              const url = document.getElementById("txtUrl").value;
+              location.href = url;
+              break;
+          }
+        }
+        catch(e) {
+          alert(JSON.stringify(e));
         }
       }
     </script>
