@@ -2,9 +2,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-      window.onload = () => {
-        document.getElementById("navigator") = navigator.userAgent;
-      }
+      window.addEventListener('load', function() {
+        document.getElementById("navigator").innerHTML = navigator.userAgent;
+      });
       
       var appUtil = {};
       var IOS_DEVICE = "ios";
@@ -42,16 +42,19 @@
       }
 
       const openApp = (type) => {
-        let url = 'smartbill2://';
         switch (type) {
           case 1:
-            location.href = url;
+            location.href = 'smartbill2://';
             break;
           case 2:
-            location.replace(url);
+            location.replace('smartbill2://');
             break;
           case 3:
             location.href = `intent://#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2`;
+            break;
+          case 4:
+            const url = document.getElementById("txtUrl").value;
+            location.href = url;
             break;
         }
       }
@@ -60,11 +63,14 @@
 <body>
   <div id="navigator"></div>
   <div id="device"></div>
-  <button type="button" onClick="chkDevice()">디바이스 확인</button>
-  <button type="button" onClick="moveAppStore()">이동</button>
-  
-  <button type="button" onClick="openApp(1)">앱 열기 - location.href</button>
-  <button type="button" onClick="openApp(3)">앱 열기 - location.replace</button>
-  <button type="button" onClick="openApp(2)">앱 열기 - intent</button>
+  <button type="button" onclick="chkDevice()">디바이스 확인</button>
+  <button type="button" onclick="moveAppStore()">이동</button>
+
+  <div>
+    <button type="button" onclick="openApp(1)">앱 열기 - location.href</button>
+    <button type="button" onclick="openApp(2)">앱 열기 - location.replace</button>
+    <button type="button" onclick="openApp(3)">앱 열기 - intent</button>
+    <input type="text" id="txtUrl" value="intent://#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2"> <button type="button" onclick="openApp(4)">앱 열기 - custom</button>
+  </div>
 </body> 
 </html>
