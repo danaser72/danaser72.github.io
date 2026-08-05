@@ -58,6 +58,12 @@
               const url = document.getElementById("txtUrl").value;
               location.href = url;
               break;
+            case 5:
+              location.href = 'kakao61b053dab084f41ea7d4ff73121ceb64://kakaolink';
+              break;
+            case 6:
+              location.href = 'kakao764c0620a90d3a50ca99edae2a9b0d93://kakaolink';
+              break;
           }
         }
         catch(e) {
@@ -79,6 +85,8 @@
     <div>
       <input type="text" id="txtUrl" value="intent:#Intent;scheme=smartbill2;package=kr.co.businesson.smartbill2;S.browser_fallback_url=${fallbackUrl};end;"> <button type="button" onclick="openApp(4)">앱 열기 - custom</button>
     </div>
+    <button type="button" onclick="openApp(5)">앱 열기 - kakaolink1</button>
+    <button type="button" onclick="openApp(6)">앱 열기 - kakaolink2</button>
   </div>
 </body> 
 </html>
